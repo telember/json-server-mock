@@ -11,10 +11,7 @@ server.put('/todos/:id',(req, res, next) =>{
     let todoId = req.params.id
     let todoData = router.db.get('todos')
     .getById(todoId).value();
-    
-    if(!req.body.completed){
-        req.body.completed =  todoData.completed || false;
-    }
+
     req.body.createdAt =  todoData.createdAt || Date.now()
     console.log(req.body)
     next()
